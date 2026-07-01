@@ -66,6 +66,9 @@ resource "helm_release" "aws_load_balancer_controller" {
     value = "aws-load-balancer-controller"
   }
 
-  # Ensure the association exists before installing helm
-  depends_on = [aws_eks_pod_identity_association.alb_controller]
+  # Ensure the association and cluster exist before installing helm
+  depends_on = [
+    module.eks,
+    aws_eks_pod_identity_association.alb_controller
+  ]
 }
