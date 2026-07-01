@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fifa-backend-deployment
+  namespace: fifa-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fifa-backend
+  template:
+    metadata:
+      labels:
+        app: fifa-backend
+    spec:
+      containers:
+        - name: fifa-backend
+          image: 765858872029.dkr.ecr.us-east-1.amazonaws.com/fifaapp-backend:c0fa24b
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          env:
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                  name: fifa-backend-secret
+                  key: MONGO_URI
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "250m"
+              memory: "256Mi"
+          readinessProbe:
+            httpGet:
+              path: /docs
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
