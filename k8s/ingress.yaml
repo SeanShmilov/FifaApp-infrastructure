@@ -6,6 +6,8 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/group.name: fifaapp
+    alb.ingress.kubernetes.io/group.order: "20"
 spec:
   ingressClassName: alb
   rules:
