@@ -5,7 +5,7 @@ data "http" "alb_iam_policy" {
 
 # Create the IAM Policy
 resource "aws_iam_policy" "alb_controller_policy" {
-  name        = "AWSLoadBalancerControllerIAMPolicy"
+  name        = "AWSLoadBalancerControllerIAMPolicy-fifaapp"
   description = "Policy for AWS Load Balancer Controller"
   policy      = data.http.alb_iam_policy.response_body
 }

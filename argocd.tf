@@ -15,5 +15,8 @@ resource "helm_release" "argocd" {
     value = "ClusterIP"
   }
 
-  depends_on = [module.eks]
+  depends_on = [
+    module.eks,
+    helm_release.aws_load_balancer_controller
+  ]
 }
