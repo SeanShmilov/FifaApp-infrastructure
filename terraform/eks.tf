@@ -17,13 +17,24 @@ module "eks" {
       min_size       = 1
       max_size       = 16
       desired_size   = var.desired_nodes
+
+      # Force kubelet to allow 11 pods instead of the default 4 on t3.micro
+      bootstrap_extra_args = "--use-max-pods false --kubelet-extra-args '--max-pods=11'"
     }
   }
 
   cluster_addons = {
     coredns                = {}
     kube-proxy             = {}
-    vpc-cni                = {}
+    vpc-cni = {
+      # Enable Prefix Delegation to give each ENI more IP addresses
+      configuration_values = jsonencode({
+        env = {
+          ENABLE_PREFIX_DELEGATION = "true"
+          WARM_PREFIX_TARGET       = "1"
+        }
+      })
+    }
     eks-pod-identity-agent = {}
   }
 
