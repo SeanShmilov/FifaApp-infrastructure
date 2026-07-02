@@ -12,15 +12,27 @@ module "eks" {
 
   eks_managed_node_groups = {
     default = {
-      ami_type       = "AL2_x86_64"
+      ami_type       = "AL2023_x86_64_STANDARD"
       instance_types = [var.node_instance_type]
-      # Using higher max_size since we are on t3.micro to allow enough pod slots
       min_size       = 1
       max_size       = 16
       desired_size   = var.desired_nodes
 
-      # Force kubelet to allow 11 pods instead of the default 4 on t3.micro
-      bootstrap_extra_args = "--use-max-pods false --kubelet-extra-args '--max-pods=11'"
+      # For AL2023, we use cloudinit_pre_nodeadm to configure the Kubelet config natively
+      cloudinit_pre_nodeadm = [
+        {
+          content_type = "application/node.eks.aws"
+          content      = <<-EOT
+            ---
+            apiVersion: node.eks.aws/v1alpha1
+            kind: NodeConfig
+            spec:
+              kubelet:
+                config:
+                  maxPods: 11
+          EOT
+        }
+      ]
     }
   }
 
