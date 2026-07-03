@@ -21,8 +21,6 @@ resource "helm_release" "argocd" {
       extraArgs:
         - --rootpath
         - /argocd
-        - --basehref
-        - /argocd/
     EOT
   ]
 }
