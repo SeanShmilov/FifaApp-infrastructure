@@ -16,8 +16,13 @@ resource "helm_release" "argocd" {
     configs:
       params:
         server.insecure: "true"
-        server.rootpath: "/argocd"
-        server.basehref: "/argocd/"
+    
+    server:
+      extraArgs:
+        - --rootpath
+        - /argocd
+        - --basehref
+        - /argocd/
     EOT
   ]
 }
