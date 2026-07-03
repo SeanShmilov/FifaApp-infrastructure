@@ -17,7 +17,15 @@ Once Terraform finishes, you need to tell your local terminal how to communicate
    aws eks update-kubeconfig --region us-east-1 --name fifaapp-eks
    ```
 
-## Step 3: Give ArgoCD its Assignment
+## Step 3: Inject your Secrets
+Because Terraform builds a completely brand-new cluster, you must recreate your manual Kubernetes secrets before deploying your apps.
+1. Run this command to inject your MongoDB connection string into the cluster:
+   ```bash
+   kubectl create namespace fifa-app
+   kubectl create secret generic fifa-backend-secret -n fifa-app --from-literal=MONGO_URI="mongodb+srv://fifa_user:fifa_password@cluster0.j32jife.mongodb.net/fifaapp?retryWrites=true&w=majority"
+   ```
+
+## Step 4: Give ArgoCD its Assignment
 Terraform automatically installs ArgoCD, but ArgoCD boots up empty. You need to give it its "assignment" so it knows which GitHub repository to watch.
 1. Apply the ArgoCD Application configuration:
    ```bash
