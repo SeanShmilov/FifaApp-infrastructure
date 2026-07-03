@@ -60,9 +60,10 @@ Because ArgoCD automatically creates physical AWS Load Balancers for your apps *
    ```bash
    kubectl delete application fifaapp -n argocd
    ```
-3. Run this command to wipe the ArgoCD UI:
+3. Run these commands to wipe both Ingresses (which triggers the physical Load Balancer deletion):
    ```bash
    kubectl delete ingress argocd-ingress -n argocd
+   kubectl delete ingress fifa-ingress -n fifa-app
    ```
 4. Wait exactly **2 minutes** for AWS to delete the physical load balancers.
 5. Go to Terraform Cloud and click **Queue Destroy Plan**. It will now tear down cleanly!
