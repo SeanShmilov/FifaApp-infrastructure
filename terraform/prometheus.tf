@@ -21,9 +21,9 @@ resource "helm_release" "prometheus" {
     alertmanager:
       enabled: false # Disable Alertmanager to save memory (not needed for basic metrics)
     kubeStateMetrics:
-      enabled: false # Disable kube-state-metrics to save memory
+      enabled: true # Required for Kubernetes Dashboards (Pods, Deployments, Resources)
     nodeExporter:
-      enabled: false # Disable node-exporter to save memory
+      enabled: true # Required for Kubernetes Dashboards (CPU, Memory, Disk)
 
     # 2. Hard-cap Prometheus Server Database Memory
     prometheus:
