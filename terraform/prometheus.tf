@@ -31,10 +31,10 @@ resource "helm_release" "prometheus" {
         retention: 12h # Only keep 12 hours of metrics instead of 15 days
         resources:
           requests:
-            memory: 128Mi
+            memory: 256Mi
             cpu: 50m
           limits:
-            memory: 256Mi # Hard crash Prometheus if it exceeds 256MB
+            memory: 512Mi # Prevent OOMKilled during startup WAL loading
             
     # 3. Hard-cap Grafana Memory and Setup Subpath Routing
     grafana:
