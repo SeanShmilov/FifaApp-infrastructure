@@ -1,4 +1,4 @@
-# 🚀 How to Restart FifaApp Infrastructure
+# 🚀 How to Restart FraudstersList Infrastructure
 
 Because you have successfully automated your infrastructure using **Terraform**, **Kubernetes**, and **GitOps**, spinning everything back up from scratch is incredibly simple. 
 
