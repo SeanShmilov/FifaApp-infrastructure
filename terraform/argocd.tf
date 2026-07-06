@@ -29,7 +29,7 @@ resource "kubernetes_ingress_v1" "argocd" {
     annotations = {
       "alb.ingress.kubernetes.io/scheme"      = "internet-facing"
       "alb.ingress.kubernetes.io/target-type" = "ip"
-      "alb.ingress.kubernetes.io/group.name"  = "fifaapp"
+      "alb.ingress.kubernetes.io/group.name"  = "fraudsterslist"
       "alb.ingress.kubernetes.io/group.order" = "10"
     }
   }

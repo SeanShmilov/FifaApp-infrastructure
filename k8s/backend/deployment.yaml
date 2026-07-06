@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fifa-backend-deployment
-  namespace: fifa-app
+  name: fraudsterslist-backend-deployment
+  namespace: fraudsterslist
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: fifa-backend
+      app: fraudsterslist-backend
   template:
     metadata:
       labels:
-        app: fifa-backend
+        app: fraudsterslist-backend
     spec:
       containers:
-        - name: fifa-backend
-          image: 765858872029.dkr.ecr.us-east-1.amazonaws.com/fifaapp-backend:6fb22c2
+        - name: fraudsterslist-backend
+          image: 765858872029.dkr.ecr.us-east-1.amazonaws.com/fraudsterslist-backend:6fb22c2
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
@@ -23,7 +23,7 @@ spec:
             - name: MONGO_URI
               valueFrom:
                 secretKeyRef:
-                  name: fifa-backend-secret
+                  name: mongodb-secret
                   key: MONGO_URI
           resources:
             requests:

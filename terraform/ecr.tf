@@ -1,5 +1,5 @@
 resource "aws_ecr_repository" "frontend" {
-  name                 = "fifaapp-frontend"
+  name                 = "fraudsterslist-frontend"
   image_tag_mutability = "MUTABLE"
   force_delete         = true
 
@@ -7,11 +7,11 @@ resource "aws_ecr_repository" "frontend" {
     scan_on_push = true
   }
 
-  tags = { Project = "FifaApp" }
+  tags = { Project = "FraudstersList" }
 }
 
 resource "aws_ecr_repository" "backend" {
-  name                 = "fifaapp-backend"
+  name                 = "fraudsterslist-backend"
   image_tag_mutability = "MUTABLE"
   force_delete         = true
 
@@ -19,5 +19,5 @@ resource "aws_ecr_repository" "backend" {
     scan_on_push = true
   }
 
-  tags = { Project = "FifaApp" }
+  tags = { Project = "FraudstersList" }
 }

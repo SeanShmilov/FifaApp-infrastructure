@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: fifa-backend-service
-  namespace: fifa-app
+  name: fraudsterslist-backend-service
+  namespace: fraudsterslist
 spec:
   selector:
-    app: fifa-backend
+    app: fraudsterslist-backend
   ports:
     - protocol: TCP
       port: 8000

@@ -62,8 +62,7 @@ resource "kubernetes_ingress_v1" "grafana" {
       "alb.ingress.kubernetes.io/scheme"      = "internet-facing"
       "alb.ingress.kubernetes.io/target-type" = "ip"
       
-      # Grouping it with ArgoCD and FifaApp so they all share ONE Load Balancer!
-      "alb.ingress.kubernetes.io/group.name"  = "fifaapp"
+      "alb.ingress.kubernetes.io/group.name"  = "fraudsterslist"
       "alb.ingress.kubernetes.io/group.order" = "15"
       
       # Fix the 503 error by telling AWS to check Grafana's specific health endpoint!

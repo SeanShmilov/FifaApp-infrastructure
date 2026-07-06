@@ -2,7 +2,7 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "~> 5.0"
 
-  name = "fifaapp-vpc"
+  name = "fraudsterslist-vpc"
   cidr = "10.0.0.0/16"
 
   azs             = ["${var.region}a", "${var.region}b", "${var.region}c"]
@@ -21,5 +21,5 @@ module "vpc" {
     "kubernetes.io/role/internal-elb" = "1"
   }
 
-  tags = { Project = "FifaApp" }
+  tags = { Project = "FraudstersList" }
 }

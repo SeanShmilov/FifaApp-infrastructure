@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: fifa-frontend-service
-  namespace: fifa-app
+  name: fraudsterslist-frontend-service
+  namespace: fraudsterslist
 spec:
   selector:
-    app: fifa-frontend
+    app: fraudsterslist-frontend
   ports:
     - protocol: TCP
       port: 80

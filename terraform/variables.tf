@@ -7,7 +7,7 @@ variable "region" {
 variable "cluster_name" {
   description = "EKS Cluster Name"
   type        = string
-  default     = "fifaapp-eks"
+  default     = "fraudsterslist-eks"
 }
 
 variable "cluster_version" {

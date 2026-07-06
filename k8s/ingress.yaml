@@ -1,12 +1,12 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: fifa-ingress
-  namespace: fifa-app
+  name: fraudsterslist-ingress
+  namespace: fraudsterslist
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/group.name: fifaapp
+    alb.ingress.kubernetes.io/group.name: fraudsterslist
     alb.ingress.kubernetes.io/group.order: "20"
 spec:
   ingressClassName: alb
@@ -17,6 +17,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: fifa-frontend-service
+                name: fraudsterslist-frontend-service
                 port:
                   number: 80

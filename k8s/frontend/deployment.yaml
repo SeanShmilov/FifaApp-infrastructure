@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fifa-frontend-deployment
-  namespace: fifa-app
+  name: fraudsterslist-frontend-deployment
+  namespace: fraudsterslist
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: fifa-frontend
+      app: fraudsterslist-frontend
   template:
     metadata:
       labels:
-        app: fifa-frontend
+        app: fraudsterslist-frontend
     spec:
       containers:
-        - name: fifa-frontend
-          image: 765858872029.dkr.ecr.us-east-1.amazonaws.com/fifaapp-frontend:b646863
+        - name: fraudsterslist-frontend
+          image: 765858872029.dkr.ecr.us-east-1.amazonaws.com/fraudsterslist-frontend:b646863
           imagePullPolicy: Always
           ports:
             - containerPort: 80
@@ -39,4 +39,4 @@ spec:
       volumes:
         - name: nginx-config-volume
           configMap:
-            name: fifa-nginx-config
+            name: fraudsterslist-nginx-config
