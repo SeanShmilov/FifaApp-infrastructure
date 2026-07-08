@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: fraudsterslist-frontend
-          image: 765858872029.dkr.ecr.us-east-1.amazonaws.com/fraudsterslist-frontend:b646863
+          image: 765858872029.dkr.ecr.us-east-1.amazonaws.com/fraudsterslist-frontend:26a1ecc
           imagePullPolicy: Always
           ports:
             - containerPort: 80
